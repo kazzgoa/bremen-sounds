@@ -7,6 +7,8 @@
 
   <!-- Estilos de Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 
   <style>
     #map {
@@ -17,23 +19,13 @@
 </head>
 <body>
   <h1>Explora el mapa</h1>
-  <div id="map"></div>
+  <div id="map" style="height: 100vh;"></div>
+<script>
+  var map = L.map('map').setView([37.8882, -4.7794], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+</script>
 
-  <!-- Scripts de Leaflet -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    // Inicializar el mapa
-    var map = L.map('map').setView([37.8882, -4.7794], 13); // Coordenadas de ejemplo: Córdoba
-
-    // Capa base con OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    // Marcador opcional
-    L.marker([37.8882, -4.7794]).addTo(map)
-      .bindPopup('¡Hola desde Córdoba!')
-      .openPopup();
-  </script>
 </body>
 </html>
