@@ -11,15 +11,13 @@
     crossorigin=""
   />
   <style>
-    /* Asegura que el mapa ocupe toda la pantalla */
     html, body {
-      margin: 0;
-      padding: 0;
       height: 100%;
+      margin: 0;
     }
     #map {
-      width: 100%;
       height: 100%;
+      width: 100%;
     }
   </style>
 </head>
@@ -32,15 +30,20 @@
     crossorigin=""
   ></script>
   <script>
-    // Coordenadas iniciales (puedes cambiarlas)
-    const map = L.map('map').setView([53.0793, 8.8017], 13);
+    // Crear el mapa centrado en Cártama, Málaga
+    const map = L.map('map').setView([36.7101, -4.6339], 13);
 
-    // Capa de estilo Stamen Terrain
-    L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg', {
-      maxZoom: 18,
-      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
-                   '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+    // Capa base de OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
+
+    // Marcador en Cártama
+    L.marker([36.7101, -4.6339])
+      .addTo(map)
+      .bindPopup('¡Hola desde Cártama! 📍')
+      .openPopup();
   </script>
 </body>
 </html>
