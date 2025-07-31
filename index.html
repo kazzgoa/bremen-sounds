@@ -1,31 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mapa interactivo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bremen-sounds</title>
 
-  <!-- Estilos de Leaflet -->
+  <!-- CSS de Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
 
   <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+    h1 {
+      margin: 1em 0;
+    }
     #map {
-      height: 100vh;
-      width: 100%;
+      height: 80vh;
+      width: 90%;
+      margin: 0 auto;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
+    audio {
+      width: 200px;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
-  <h1>Explora el mapa</h1>
-  <div id="map" style="height: 100vh;"></div>
-<script>
-  var map = L.map('map').setView([37.8882, -4.7794], 13);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-</script>
+  <h1>bremen-sounds</h1>
+  <div id="map"></div>
 
+  <!-- JS de Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Coordenadas de Bremen
+    const map = L.map('map').setView([53.0793, 8.8017], 13);
+
+    // Capa base con OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Ejemplo de marcador con sonido
+    const marker = L.marker([53.0750, 8.8070]).addTo(map);
+    marker.bindPopup(`
+      <strong>Marktplatz de Bremen</strong><br/>
+      <audio controls>
+        <source src="AQUÍ_VA_EL_LINK_DEL_AUDIO.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio.
+      </audio>
+    `);
+  </script>
 </body>
 </html>
