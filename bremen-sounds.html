@@ -1,34 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Sonidos de Bremen</title>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa interactivo</title>
+
+  <!-- Estilos de Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
   <style>
-    #map { height: 100vh; width: 100%; }
-    audio { width: 200px; margin-top: 5px; }
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
+  <h1>Explora el mapa</h1>
   <div id="map"></div>
 
+  <!-- Scripts de Leaflet -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([53.0793, 8.8017], 13); // Coordenadas de Bremen
+    // Inicializar el mapa
+    var map = L.map('map').setView([37.8882, -4.7794], 13); // Coordenadas de ejemplo: Córdoba
 
+    // Capa base con OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data © OpenStreetMap contributors'
+      attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Ejemplo de marcador con sonido
-    const marker = L.marker([53.0736, 8.8064]).addTo(map); // Ubicación cualquiera en Bremen
-    marker.bindPopup(`
-      <strong>Mercado de Bremen</strong><br/>
-      <audio controls>
-        <source src="URL_DEL_SONIDO_AQUI.mp3" type="audio/mpeg">
-        Tu navegador no soporta audio
-      </audio>
-    `);
+    // Marcador opcional
+    L.marker([37.8882, -4.7794]).addTo(map)
+      .bindPopup('¡Hola desde Córdoba!')
+      .openPopup();
   </script>
 </body>
 </html>
