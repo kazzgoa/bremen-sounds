@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mapa con Leaflet</title>
+  <title>Mapa minimalista - Bremen</title>
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -24,16 +24,20 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([36.7101, -4.6339], 13);
+    // Coordenadas de Bremen, Alemania
+    const map = L.map('map').setView([53.0793, 8.8017], 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap contributors'
+    // Estilo moderno y minimalista: Carto Light
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
     }).addTo(map);
 
-    L.marker([36.7101, -4.6339])
+    // Marcador en Bremen
+    L.marker([53.0793, 8.8017])
       .addTo(map)
-      .bindPopup('¡Hola desde Cártama! 📍')
+      .bindPopup('¡Bienvenido a Bremen! 🇩🇪')
       .openPopup();
   </script>
 </body>
