@@ -38,15 +38,18 @@
   <!-- Scripts de Leaflet -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    // Coordenadas correctas para Bremen
+    // Inicializar el mapa centrado en Bremen
     const map = L.map('map').setView([53.0793, 8.8017], 13);
 
-    // Capa base de OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
+    // Tile layer con estilo Stadia Stamen Terrain
+    L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, ' +
+                   '&copy; <a href="https://openmaptiles.org/">OpenMapTiles</a>, ' +
+                   '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    // Ejemplo de marcador con audio en Bremen
+    // Marcador con audio
     const marker = L.marker([53.0750, 8.8070]).addTo(map);
     marker.bindPopup(`
       <strong>Marktplatz de Bremen</strong><br/>
